@@ -53,27 +53,27 @@ def index_bam(bam_fp):
 def run_filter_step(bam_fp, positions_fp, output_fp, threads=1):
     """run bam filter step"""
     tool_args = ['samtools', 'view', '-h',
-            '-@', threads,
-            '-R', positions_fp,
+            '-@', str(threads),
+            '-L', positions_fp,
             '-o', output_fp,
-            bam_fp
+            bam_fp]
 
-    print(f'slate is executing filtering step')
+    print('slate is executing filtering step')
     print(f'slate is executing the following command: {" ".join(tool_args)}')
     print(subprocess.check_output(tool_args).decode('utf-8'))
 
 def run_readcount_step(filtered_bam_fp, positions_fp, reference_fasta, output_fp):
     """run bam readcount step"""
     tool_args = ['bam-readcount',
-        '-w', 1,
+        '-w', '1',
         '-f', reference_fasta,
         '-l', positions_fp,
         filtered_bam_fp]
 
-    print(f'slate is executing bam readcount step')
+    print('slate is executing bam readcount step')
     print(f'slate is executing the following command: {" ".join(tool_args)}')
     f = open(output_fp, 'w')
-    print(subprocess.check_output(tool_args, stdout=f).decode('utf-8'))
+    subprocess.call(tool_args, stdout=f)
     print(f'slate is piping stdout to: {output_fp}')
     f.close()
 
