@@ -1,4 +1,6 @@
 threads: 2
+min_mapping_quality: 20
+min_base_quality: 20
 positions:
   class: File
   path: ../../tests/data/positions.bed

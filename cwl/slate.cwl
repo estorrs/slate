@@ -12,6 +12,16 @@ inputs:
     inputBinding:
       position: 0
       prefix: '--threads'
+  - id: min_base_quality
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--min-base-quality'
+  - id: min_mapping_quality
+    type: int?
+    inputBinding:
+      position: 0
+      prefix: '--min-mapping-quality'
   - id: input_bam
     type: File
     inputBinding:
@@ -45,4 +55,4 @@ arguments:
     valueFrom: output.filtered.bam
 requirements:
   - class: DockerRequirement
-    dockerPull: 'estorrs/slate:0.0.1'
+    dockerPull: 'estorrs/slate:0.0.2'
