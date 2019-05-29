@@ -39,3 +39,16 @@ def test_min_mapping_quality():
     results = subprocess.check_output(tool_args).decode('utf-8')
 
     assert True
+
+def test_vaf_output():
+    tool_args = ['python', 'slate/slate.py',
+            '--positions', TEST_POSITIONS,
+            '--filtered-bam-output', TEST_FILTERED_BAM,
+            '--readcount-output', TEST_READCOUNT,
+            '--vaf-output', 'output.vaf',
+            '--fasta', TEST_FASTA_REFERENCE,
+            TEST_INPUT_BAM]
+    
+    results = subprocess.check_output(tool_args).decode('utf-8')
+
+    assert True
