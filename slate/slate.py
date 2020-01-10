@@ -84,7 +84,8 @@ def run_readcount_step(filtered_bam_fp, positions_fp, reference_fasta, output_fp
 def main():
     check_arguments()
 
-    index_bam(args.input_bam)
+    if not os.path.exists(args.input_bam + '.bai'):
+        index_bam(args.input_bam)
     run_filter_step(args.input_bam, args.positions, args.filtered_bam_output, threads=args.threads)
     index_bam(args.filtered_bam_output)
     run_readcount_step(args.filtered_bam_output, args.positions, args.fasta, args.readcount_output,
