@@ -35,7 +35,7 @@ outputs:
     type: File?
     outputBinding:
       glob: output.filtered.bam
-label: gneiss_align
+label: slate
 arguments:
   - position: 0
     prefix: '--readcount-output'
