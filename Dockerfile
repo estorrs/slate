@@ -1,4 +1,4 @@
-FROM python:3.6-jessie
+FROM python:3.7
 
 RUN apt-get update
 RUN yes | apt-get install vim
